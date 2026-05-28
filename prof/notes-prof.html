@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes — SmartCampus</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="../images/logo-blanc.png" alt="logo">
+    </div>
+    <nav class="nav">
+      <a href="dashboard-prof.html" class="nav-item">🏠 Tableau de bord</a>
+      <a href="planning-prof.html"  class="nav-item">📅 Planning</a>
+      <a href="notes-prof.html"     class="nav-item active">📝 Notes</a>
+      <a href="presences-prof.html" class="nav-item">✅ Présences</a>
+      <a href="profil-prof.html"    class="nav-item">👤 Profil</a>
+    </nav>
+    <a href="../connexion.html" class="nav-logout">🚪 Déconnexion</a>
+  </aside>
+
+  <main class="main">
+
+    <div class="topbar">
+      <div>
+        <h1>📝 Gestion des Notes</h1>
+        <p>Saisir, modifier et valider les notes de vos élèves</p>
+      </div>
+      <div class="topbar-right">
+        <button class="btn-outline">Exporter</button>
+        <button class="btn-primary">+ Ajouter une note</button>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:20px">
+      <div class="filtres">
+        <div class="filtre-group">
+          <label>Classe</label>
+          <select class="filtre-select">
+            <option>Toutes les classes</option>
+            <option>Terminale B</option>
+            <option>Première A</option>
+            <option>Seconde C</option>
+          </select>
+        </div>
+        <div class="filtre-group">
+          <label>Matière</label>
+          <select class="filtre-select">
+            <option>Toutes les matières</option>
+            <option>Mathématiques</option>
+            <option>Physique</option>
+          </select>
+        </div>
+        <div class="filtre-group">
+          <label>Trimestre</label>
+          <select class="filtre-select">
+            <option>Trimestre 1</option>
+            <option>Trimestre 2</option>
+            <option>Trimestre 3</option>
+          </select>
+        </div>
+        <button class="btn-primary">Filtrer</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        📋 Terminale B — Mathématiques
+        <span class="badge-moyenne">Moyenne classe : --</span>
+      </div>
+
+      <table class="notes-table">
+        <thead>
+          <tr>
+            <th>Élève</th>
+            <th>CC 1</th>
+            <th>CC 2</th>
+            <th>Examen</th>
+            <th>Moyenne</th>
+            <th>Statut</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="eleve-name">👤 Nom Élève 1</td>
+            <td><input type="number" class="note-input" min="0" max="20" placeholder="--"></td>
+            <td><input type="number" class="note-input" min="0" max="20" placeholder="--"></td>
+            <td><input type="number" class="note-input" min="0" max="20" placeholder="--"></td>
+            <td class="moyenne">--</td>
+            <td><span class="badge-statut attente">En attente</span></td>
+            <td>
+              <button class="btn-save">💾 Sauver</button>
+              <button class="btn-lock">🔒 Valider</button>
+            </td>
+          </tr>
+          <tr>
+            <td class="eleve-name">👤 Nom Élève 2</td>
+            <td><input type="number" class="note-input" min="0" max="20" placeholder="--"></td>
+            <td><input type="number" class="note-input" min="0" max="20" placeholder="--"></td>
+            <td><input type="number" class="note-input" min="0" max="20" placeholder="--"></td>
+            <td class="moyenne">--</td>
+            <td><span class="badge-statut attente">En attente</span></td>
+            <td>
+              <button class="btn-save">💾 Sauver</button>
+              <button class="btn-lock">🔒 Valider</button>
+            </td>
+          </tr>
+          <tr>
+            <td class="eleve-name">👤 Nom Élève 3</td>
+            <td><input type="number" class="note-input" min="0" max="20" placeholder="--"></td>
+            <td><input type="number" class="note-input" min="0" max="20" placeholder="--"></td>
+            <td><input type="number" class="note-input" min="0" max="20" placeholder="--"></td>
+            <td class="moyenne">--</td>
+            <td><span class="badge-statut valide">Validé</span></td>
+            <td>
+              <button class="btn-save" disabled>💾 Sauver</button>
+              <button class="btn-lock" disabled>🔒 Validé</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="table-footer">
+        <button class="btn-full">🔒 Valider toutes les notes</button>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+document.querySelectorAll('tr').forEach(row => {
+  const inputs = row.querySelectorAll('.note-input');
+  const moyenneCell = row.querySelector('.moyenne');
+  if (!inputs.length || !moyenneCell) return;
+  inputs.forEach(input => {
+    input.addEventListener('input', () => {
+      const vals = [...inputs].map(i => parseFloat(i.value)).filter(v => !isNaN(v));
+      if (vals.length === 3) {
+        const moy = ((vals[0] * 1) + (vals[1] * 1) + (vals[2] * 2)) / 4;
+        moyenneCell.textContent = moy.toFixed(2);
+        moyenneCell.style.color = moy >= 10 ? '#16a34a' : '#dc2626';
+      } else {
+        moyenneCell.textContent = '--';
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
