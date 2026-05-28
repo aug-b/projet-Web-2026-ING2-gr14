@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire de Contact</title>
+
+   
+<style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            background:linear-gradient(180deg,#082f72,#0b4bb3);
+            min-height:100vh;
+            display:flex;
+            padding:20px;
+        }
+
+        /* logo*/
+        header{
+            position:absolute;
+            top:20px;
+            left:20px;
+        }
+
+        header img{
+            width:40%;
+            height:auto;
+        }
+
+        /* affichache de l'illustration*/
+        .illustration{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .illustration img{
+            width:120%;
+            height:auto;
+            margin-left:35%;
+            border-radius:25px;
+        }
+        
+
+        /* bloc de conexion*/
+        .bloc{
+            width:100%;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .form-card{
+            width:100%;
+            max-width:470px;
+            background:white;
+            border-radius:25px;
+            padding:40px 35px;
+            margin-left:30%;
+        }
+
+        .form-card h2{
+            text-align:center;
+            font-size:34px;
+            color:#0f172a;
+            margin-bottom:10px;
+        }
+
+        .form-card p{
+            text-align:center;
+            color:#64748b;
+            margin-bottom:35px;
+        }
+
+        /* =========================
+           FORM CARD
+        ========================= */
+        .form-card{
+            width: 100%;
+            max-width: 650px;
+            background: white;
+            border-radius: 24px;
+            padding: 45px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+        }
+
+        .form-card h2{
+            text-align: center;
+            margin-bottom: 35px;
+            font-size: 30px;
+            color: #0f172a;
+        }
+
+        /* =========================
+           FORM GRID
+        ========================= */
+        .form-grid{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+
+        /* INPUTS*/
+        .input-group{
+            position:relative;
+            margin-bottom:22px;
+        }
+
+        .input-group label{
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #475569;
+        }
+
+        .input-group input{
+            width: 100%;
+            height: 50px;
+            border: 1px solid #dbe3ef;
+            border-radius: 12px;
+            padding: 0 15px;
+            font-size: 15px;
+            background: #f8fafc;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus{
+            outline: none;
+            border-color: #2563eb;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(37,99,235,0.12);
+        }
+
+        .upload-box{
+            width: 100%;
+            height: 120px;
+            border: 2px dashed #cbd5e1;
+            border-radius: 16px;
+            background: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+            color: #64748b;
+            font-size: 14px;
+            padding: 15px;
+        }
+
+        .upload-box:hover{
+            border-color: #2563eb;
+            background: #eff6ff;
+        }
+
+        .upload-box input{
+            display: none;
+        }
+
+        
+
+        /*bouton*/
+        .btn{
+            width:100%;
+            height:55px;
+            border:none;
+            border-radius:14px;
+            background:linear-gradient(135deg,#2563eb,#1d4ed8);
+            color:white;
+            font-size:16px;
+            font-weight:bold;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        .btn:hover{
+            transform:translateY(-2px);
+            box-shadow:0 8px 18px rgba(37,99,235,0.25);
+        }
+
+        /* RESPONSIVE */
+   
+    @media(max-width:1300px){
+
+    body{
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .bloc{
+        width:100%;
+        margin-top:40px;
+        margin-right: 25%;
+    }
+
+    .module-connexion{
+        width:90%;
+        max-width:400px;
+    }
+
+    .illustration{
+        width:100%;
+        display:flex;
+        justify-content:center;
+    }
+
+    .illustration img{
+        width:90%;
+        margin-top: 20%;
+        margin-right: 30%;
+        height:auto;
+        border-radius:25px;
+    }
+
+            .form-grid{
+                grid-template-columns: 1fr;
+            }
+
+            .form-card{
+                padding: 35px 25px;
+            }
+
+}
+
+    </style>
+
+</head>
+
+<body>
+
+            <header>
+               <img src="images/logo-blanc.png" alt="logo"> 
+            </header>
+
+        <div class = "illustration">
+            <img src="images/illustration.png" alt="illustration">
+
+        </div>
+
+        <div class="bloc">
+            <div class="form-card">
+
+                <h2>Formulaire de Contact</h2>
+
+                <form>
+
+                    <div class="form-grid">
+
+                        <!-- COLONNE GAUCHE -->
+                        <div>
+
+                            <div class="input-group">
+                                <label>Nom Prénom</label>
+                                <input type="text" placeholder="Entrer votre nom">
+                            </div>
+
+                            <div class="input-group">
+                                <label>Email</label>
+                                <input type="email" placeholder="Entrer votre email">
+                            </div>
+
+                            <div class="input-group">
+                                <label>Téléphone</label>
+                                <input type="text" placeholder="Entrer votre téléphone">
+                            </div>
+
+                            <div class="input-group">
+                                <label>Date de naissance</label>
+                                <input type="date">
+                            </div>
+
+                            <div class="input-group">
+                                <label>Classe</label>
+                                <input type="text" placeholder="Entrer votre Classe">
+                            </div>
+
+                        </div>
+
+                        <!-- COLONNE DROITE -->
+                        <div>
+
+                            <div class="input-group">
+
+                                <label>Télécharger votre photo</label>
+
+                                <label class="upload-box">
+
+                                    <input type="file">
+
+                                    Cliquez pour ajouter une photo
+
+                                </label>
+
+                            </div>
+
+                            <div class="input-group">
+
+                                <label>Télécharger votre pièce d'identité</label>
+
+                                <label class="upload-box">
+
+                                    <input type="file">
+
+                                    Ajouter une pièce d'identité
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <button class="btn">
+                        Envoyer
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+
+</body>
+</html>
