@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Changer mot de passe</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            background:linear-gradient(180deg,#082f72,#0b4bb3);
+            min-height:100vh;
+            display:flex;
+            padding:20px;
+        }
+
+        /* logo*/
+        header{
+            position:absolute;
+            top:20px;
+            left:20px;
+        }
+
+        header img{
+            width:40%;
+            height:auto;
+        }
+
+        /* affichache de l'illustration*/
+        .illustration{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .illustration img{
+            width:120%;
+            height:auto;
+            margin-left:35%;
+            border-radius:25px;
+        }
+        
+
+        /* bloc de conexion*/
+        .bloc{
+            width:100%;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .form-card{
+            width:100%;
+            max-width:470px;
+            background:white;
+            border-radius:25px;
+            padding:40px 35px;
+            margin-left:30%;
+        }
+
+        .form-card h2{
+            text-align:center;
+            font-size:34px;
+            color:#0f172a;
+            margin-bottom:10px;
+        }
+
+        .form-card p{
+            text-align:center;
+            color:#64748b;
+            margin-bottom:35px;
+        }
+
+        /* INPUTS*/
+        .input-group{
+            position:relative;
+            margin-bottom:22px;
+        }
+
+        .input-group label{
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #475569;
+        }
+
+        .input-group input{
+            width: 100%;
+            height: 50px;
+            border: 1px solid #dbe3ef;
+            border-radius: 12px;
+            padding: 0 15px;
+            font-size: 15px;
+            background: #f8fafc;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus{
+            outline: none;
+            border-color: #2563eb;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(37,99,235,0.12);
+        }
+
+        
+
+        /*bouton*/
+        .btn{
+            width:100%;
+            height:55px;
+            border:none;
+            border-radius:14px;
+            background:linear-gradient(135deg,#2563eb,#1d4ed8);
+            color:white;
+            font-size:16px;
+            font-weight:bold;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        .btn:hover{
+            transform:translateY(-2px);
+            box-shadow:0 8px 18px rgba(37,99,235,0.25);
+        }
+        .retour{
+            margin-top:25px;
+            text-align:center;
+            font-size:14px;
+            color:#64748b;
+        }
+
+        .connecter{
+            margin-top:8px;
+            color:#2563eb;
+            font-weight:bold;
+            cursor:pointer;
+        }
+
+
+
+        /* RESPONSIVE */
+   
+    @media(max-width:1300px){
+
+    body{
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .bloc{
+        width:100%;
+        margin-top:40px;
+        margin-right: 25%;
+    }
+
+    .module-connexion{
+        width:90%;
+        max-width:400px;
+    }
+
+    .illustration{
+        width:100%;
+        display:flex;
+        justify-content:center;
+    }
+
+    .illustration img{
+        width:90%;
+        margin-top: 20%;
+        margin-right: 30%;
+        height:auto;
+        border-radius:25px;
+    }
+
+}
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+               <img src="images/logo-blanc.png" alt="logo"> 
+    </header>
+
+            <div class="illustration">
+
+                <img src="images/illustration.png"alt="illustration">
+
+            </div>
+
+        <div class="bloc">
+
+            <div class="form-card">
+
+                <h2>Changer le mot de passe</h2>
+
+                <form>
+
+                    <div class="input-group">
+                        <label>Email</label>
+
+                        <input type="email"
+                        placeholder="Entrer votre email">
+                    </div>
+
+                    <div class="input-group">
+                        <label>
+                            Mot de passe actuel
+                        </label>
+
+                        <input type="password"
+                        placeholder="Mot de passe actuel">
+                    </div>
+
+                    <div class="input-group">
+                        <label>
+                            Nouveau mot de passe
+                        </label>
+
+                        <input type="password"placeholder="Nouveau mot de passe">
+                    </div>
+
+                    <div class="input-group">
+                        <label>
+                            Confirmer le mot de passe
+                        </label>
+
+                        <input type="password"placeholder="Confirmer le mot de passe">
+                    </div>
+
+                    <button class="btn">
+                        Enregistrer
+                    </button>
+
+                </form>
+
+                <div class="retour">
+
+                    Retour à la connexion
+
+                    <div class="connecter">
+                        Se connecter
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+</body>
+</html>
