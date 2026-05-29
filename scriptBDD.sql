@@ -120,11 +120,10 @@ CREATE TABLE utilisateur_en_attente (
     nom VARCHAR(100) NOT NULL,
     prenom VARCHAR(100) NOT NULL,
     email VARCHAR(150) UNIQUE NOT NULL,
-    mot_de_passe VARCHAR(255) NOT NULL,
-    role ENUM('admin', 'enseignant', 'eleve') NOT NULL,
     telephone VARCHAR(20),
     date_de_naissance DATE,
     photo VARCHAR(255),
+    photo_id VARCHAR(255),
     date_demande DATETIME DEFAULT CURRENT_TIMESTAMP,
     statut ENUM('en_attente', 'accepte', 'refuse') DEFAULT 'en_attente'
 );
