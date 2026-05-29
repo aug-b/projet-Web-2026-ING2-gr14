@@ -127,3 +127,85 @@ CREATE TABLE utilisateur_en_attente (
     date_demande DATETIME DEFAULT CURRENT_TIMESTAMP,
     statut ENUM('en_attente', 'accepte', 'refuse') DEFAULT 'en_attente'
 );
+
+
+
+-- ADMIN
+
+INSERT INTO utilisateur
+(nom, prenom, email, mot_de_passe, telephone, date_de_naissance, photo, role)
+VALUES
+('Martin', 'Admin', 'admin@smartcampus.fr', 'admin123', '0600000000', '1980-01-01', '', 'admin');
+
+INSERT INTO admin (id_utilisateur)
+VALUES (LAST_INSERT_ID());
+
+
+
+-- PROF 1
+
+INSERT INTO utilisateur
+(nom, prenom, email, mot_de_passe, telephone, date_de_naissance, photo, role)
+VALUES
+('Dupont', 'Jean', 'j.dupont@smartcampus.fr', 'prof123', '0600000001', '1985-05-10', '', 'enseignant');
+
+INSERT INTO enseignant
+(id_utilisateur, specialite)
+VALUES
+(LAST_INSERT_ID(), 'Mathématiques');
+
+
+
+-- PROF 2
+
+INSERT INTO utilisateur
+(nom, prenom, email, mot_de_passe, telephone, date_de_naissance, photo, role)
+VALUES
+('Durand', 'Sophie', 's.durand@smartcampus.fr', 'prof123', '0600000002', '1987-08-15', '', 'enseignant');
+
+INSERT INTO enseignant
+(id_utilisateur, specialite)
+VALUES
+(LAST_INSERT_ID(), 'Informatique');
+
+
+
+-- ELEVE 1
+
+INSERT INTO utilisateur
+(nom, prenom, email, mot_de_passe, telephone, date_de_naissance, photo, role)
+VALUES
+('Bernard', 'Lucas', 'lucas@smartcampus.fr', 'eleve123', '0600000010', '2005-03-12', '', 'eleve');
+
+INSERT INTO eleve
+(id_utilisateur, numero_eleve, niveau_scolaire)
+VALUES
+(LAST_INSERT_ID(), 'E001', 'ING1');
+
+
+
+-- ELEVE 2
+
+INSERT INTO utilisateur
+(nom, prenom, email, mot_de_passe, telephone, date_de_naissance, photo, role)
+VALUES
+('Petit', 'Emma', 'emma@smartcampus.fr', 'eleve123', '0600000011', '2004-06-20', '', 'eleve');
+
+INSERT INTO eleve
+(id_utilisateur, numero_eleve, niveau_scolaire)
+VALUES
+(LAST_INSERT_ID(), 'E002', 'ING2');
+
+
+
+-- ELEVE 3
+
+INSERT INTO utilisateur
+(nom, prenom, email, mot_de_passe, telephone, date_de_naissance, photo, role)
+VALUES
+('Robert', 'Hugo', 'hugo@smartcampus.fr', 'eleve123', '0600000012', '2005-09-30', '', 'eleve');
+
+INSERT INTO eleve
+(id_utilisateur, numero_eleve, niveau_scolaire)
+VALUES
+(LAST_INSERT_ID(), 'E003', 'ING1');
