@@ -122,6 +122,7 @@ CREATE TABLE utilisateur_en_attente (
     email VARCHAR(150) UNIQUE NOT NULL,
     telephone VARCHAR(20),
     date_de_naissance DATE,
+    classe VARCHAR(20),
     photo VARCHAR(255),
     photo_id VARCHAR(255),
     date_demande DATETIME DEFAULT CURRENT_TIMESTAMP,
