@@ -237,19 +237,11 @@
 <body>
 
             <header>
-<<<<<<< HEAD
-               <img src="images/logo-blanc.png" alt="logo"> 
-            </header>
-
-        <div class = "illustration">
-            <img src="images/illustration.png" alt="illustration">
-=======
                <img src="../images/logo-blanc.png" alt="logo"> 
             </header>
 
         <div class = "illustration">
             <img src="../images/illustration.png" alt="illustration">
->>>>>>> f967d7702c873b98001b87d62e5becc7766c61c8
 
         </div>
 
@@ -258,7 +250,7 @@
 
                 <h2>Formulaire de Contact</h2>
 
-                <form>
+                <form id="formInscription" action="formulaire-contact.php" method="POST" enctype="multipart/form-data">
 
                     <div class="form-grid">
 
@@ -266,28 +258,34 @@
                         <div>
 
                             <div class="input-group">
-                                <label>Nom Prénom</label>
-                                <input type="text" placeholder="Entrer votre nom">
+                                <label>Nom</label>
+                                <input type="text" name="nom" placeholder="Nom">
+                            </div>
+                            <div class="input-group">
+                                <label>Prénom</label>
+                                <input type="text" name="prenom" placeholder="Prénom">
                             </div>
 
-                            <div class="input-group">
+                           <div class="input-group">
                                 <label>Email</label>
-                                <input type="email" placeholder="Entrer votre email">
+                                <input type="email"name="email"id="email"placeholder="Email"required>
+
+                            <div id="messageEmail"></div>
                             </div>
 
                             <div class="input-group">
                                 <label>Téléphone</label>
-                                <input type="text" placeholder="Entrer votre téléphone">
+                                <input type="text" name="telephone" placeholder="Entrer votre téléphone">
                             </div>
 
                             <div class="input-group">
                                 <label>Date de naissance</label>
-                                <input type="date">
+                                <input type="date" name="date_naissance">
                             </div>
 
                             <div class="input-group">
                                 <label>Classe</label>
-                                <input type="text" placeholder="Entrer votre Classe">
+                                <input type="text" name="classe" placeholder="Entrer votre Classe">
                             </div>
 
                         </div>
@@ -301,7 +299,7 @@
 
                                 <label class="upload-box">
 
-                                    <input type="file">
+                                    <input type="file" name="photo" required>
 
                                     Cliquez pour ajouter une photo
 
@@ -315,7 +313,7 @@
 
                                 <label class="upload-box">
 
-                                    <input type="file">
+                                    <input type="file" name="photo_id" required>
 
                                     Ajouter une pièce d'identité
 
@@ -327,11 +325,7 @@
 
                     </div>
 
-<<<<<<< HEAD
-                    <button class="btn">
-=======
-                    <button type="button" class="btn" onclick="window.location.href='connexion.html'">
->>>>>>> f967d7702c873b98001b87d62e5becc7766c61c8
+                    <button type="submit" class="btn">
                         Envoyer
                     </button>
 
@@ -339,6 +333,69 @@
 
             </div>
         </div>
+<script>
 
+let emailDisponible = false;
+
+document
+.getElementById("email")
+.addEventListener("blur", function(){
+
+    let email = this.value;
+
+    fetch("verifier_email.php", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type":
+            "application/x-www-form-urlencoded"
+        },
+
+        body:
+        "email=" + encodeURIComponent(email)
+
+    })
+
+    .then(response => response.text())
+
+    .then(data => {
+
+        const message =
+        document.getElementById("messageEmail");
+
+        if(data.trim() === "existe"){
+
+            message.innerHTML =
+            "Adresse déjà utilisée";
+
+            message.style.color = "red";
+
+            emailDisponible = false;
+        }
+        else{
+
+            emailDisponible = true;
+        }
+    });
+
+});
+
+document
+.getElementById("formInscription")
+.addEventListener("submit", function(e){
+
+    if(!emailDisponible){
+
+        e.preventDefault();
+
+        alert(
+            "Cette adresse email est déjà utilisée."
+        );
+    }
+
+});
+
+</script>
 </body>
 </html>

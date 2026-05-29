@@ -9,7 +9,7 @@ if(!isset($_POST["email"]) || !isset($_POST["password"])){
 $email = $_POST["email"];
 $password = $_POST["password"];
 
-$conn = new mysqli("localhost", "root", "root", "smartcampus");
+$conn = new mysqli("localhost", "root", "", "smartcampus");
 
 if ($conn->connect_error) {
     die("Erreur connexion BDD : " . $conn->connect_error);
@@ -41,7 +41,7 @@ $_SESSION["role"] = $user["role"];
         echo "c'est un prof";
     }
     elseif($user["role"] == "eleve"){
-          header("Location: dashboard-etudiant.php");
+          header("Location: ../eleve/dashboard-etudiant.php");
     exit();
 
     }
