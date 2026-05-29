@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Changer mot de passe</title>
@@ -19,7 +20,6 @@
             padding:20px;
         }
 
-        /* logo*/
         header{
             position:absolute;
             top:20px;
@@ -31,7 +31,6 @@
             height:auto;
         }
 
-        /* affichache de l'illustration*/
         .illustration{
             display:flex;
             justify-content:center;
@@ -44,9 +43,7 @@
             margin-left:35%;
             border-radius:25px;
         }
-        
 
-        /* bloc de conexion*/
         .bloc{
             width:100%;
             display:flex;
@@ -76,41 +73,27 @@
             margin-bottom:35px;
         }
 
-        /* INPUTS*/
         .input-group{
             position:relative;
             margin-bottom:22px;
         }
 
         .input-group label{
-            display: block;
-            margin-bottom: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #475569;
+            display:block;
+            margin-bottom:8px;
+            font-size:14px;
+            color:#475569;
         }
 
         .input-group input{
-            width: 100%;
-            height: 50px;
-            border: 1px solid #dbe3ef;
-            border-radius: 12px;
-            padding: 0 15px;
-            font-size: 15px;
-            background: #f8fafc;
-            transition: 0.3s;
+            width:100%;
+            height:50px;
+            border:1px solid #dbe3ef;
+            border-radius:12px;
+            padding:0 15px;
+            font-size:15px;
         }
 
-        .input-group input:focus{
-            outline: none;
-            border-color: #2563eb;
-            background: white;
-            box-shadow: 0 0 0 4px rgba(37,99,235,0.12);
-        }
-
-        
-
-        /*bouton*/
         .btn{
             width:100%;
             height:55px;
@@ -121,13 +104,8 @@
             font-size:16px;
             font-weight:bold;
             cursor:pointer;
-            transition:0.3s;
         }
 
-        .btn:hover{
-            transform:translateY(-2px);
-            box-shadow:0 8px 18px rgba(37,99,235,0.25);
-        }
         .retour{
             margin-top:25px;
             text-align:center;
@@ -142,120 +120,91 @@
             cursor:pointer;
         }
 
+        @media(max-width:1300px){
 
+            body{
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+            }
 
-        /* RESPONSIVE */
-   
-    @media(max-width:1300px){
+            .bloc{
+                width:100%;
+                margin-top:40px;
+                margin-right:25%;
+            }
 
-    body{
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
-    }
+            .illustration{
+                width:100%;
+                display:flex;
+                justify-content:center;
+            }
 
-    .bloc{
-        width:100%;
-        margin-top:40px;
-        margin-right: 25%;
-    }
-
-    .module-connexion{
-        width:90%;
-        max-width:400px;
-    }
-
-    .illustration{
-        width:100%;
-        display:flex;
-        justify-content:center;
-    }
-
-    .illustration img{
-        width:90%;
-        margin-top: 20%;
-        margin-right: 30%;
-        height:auto;
-        border-radius:25px;
-    }
-
-}
+            .illustration img{
+                width:90%;
+                margin-top:20%;
+                margin-right:30%;
+                height:auto;
+                border-radius:25px;
+            }
+        }
 
     </style>
-</head>
+</head><body>
 
-<body>
+<header>
+    <img src="images/logo-blanc.png" alt="logo">
+</header>
 
-    <header>
-               <img src="images/logo-blanc.png" alt="logo"> 
-    </header>
+<div class="illustration">
+    <img src="images/illustration.png" alt="illustration">
+</div>
 
-            <div class="illustration">
+<div class="bloc">
 
-                <img src="images/illustration.png"alt="illustration">
+    <div class="form-card">
 
+        <h2>Changer le mot de passe</h2>
+
+        <form>
+
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" placeholder="Entrer votre email">
             </div>
 
-        <div class="bloc">
-
-            <div class="form-card">
-
-                <h2>Changer le mot de passe</h2>
-
-                <form>
-
-                    <div class="input-group">
-                        <label>Email</label>
-
-                        <input type="email"
-                        placeholder="Entrer votre email">
-                    </div>
-
-                    <div class="input-group">
-                        <label>
-                            Mot de passe actuel
-                        </label>git checkout test
-
-                        <input type="password"
-                        placeholder="Mot de passe actuel">
-                    </div>
-
-                    <div class="input-group">
-                        <label>
-                            Nouveau mot de passe
-                        </label>
-
-                        <input type="password"placeholder="Nouveau mot de passe">
-                    </div>
-
-                    <div class="input-group">
-                        <label>
-                            Confirmer le mot de passe
-                        </label>
-
-                        <input type="password"placeholder="Confirmer le mot de passe">
-                    </div>
-
-                    <button class="btn">
-                        Enregistrer
-                    </button>
-
-                </form>
-
-                <div class="retour">
-
-                    Retour à la connexion
-
-                    <div class="connecter">
-                        Se connecter
-                    </div>
-
-                </div>
-
+            <div class="input-group">
+                <label>Mot de passe actuel</label>
+                <input type="password" placeholder="Mot de passe actuel">
             </div>
 
+            <div class="input-group">
+                <label>Nouveau mot de passe</label>
+                <input type="password" placeholder="Nouveau mot de passe">
+            </div>
+
+            <div class="input-group">
+                <label>Confirmer le mot de passe</label>
+                <input type="password" placeholder="Confirmer le mot de passe">
+            </div>
+
+            <button class="btn">
+                Enregistrer
+            </button>
+
+        </form>
+
+        <div class="retour">
+            Retour à la connexion
+
+            <div class="connecter">
+                Se connecter
+            </div>
         </div>
 
+    </div>
+
+</div>
 
 </body>
 </html>
