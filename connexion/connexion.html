@@ -155,6 +155,11 @@
             cursor:pointer;
         }
 
+    #message-erreur{
+    color:red;
+    margin-bottom:15px;
+    font-size:14px;
+}
 
 
         /* RESPONSIVE */
@@ -212,25 +217,24 @@
                 <h2>Bienvenue</h2>
                 <p> Connectez-vous à votre compte</p>
 
-                <form>
+                <form action="page-connexion.php" method="POST">
                     <div class="input-group">
                         <span>✉</span>
-                        <input type="email"placeholder="Email">
+                       <input type="email" name="email" placeholder="Email" required>
 
                     </div>
                     <div class="input-group">
                         <span>🔒</span>
-                        <input type="password"placeholder="Mot de passe">
+                        <input type="password" name="password" placeholder="Mot de passe" required>
                     </div>
 
                     <div class="forgot-password">
                         Mot de passe oublié ?
                     </div>
 
-                    <button class="login-btn">
-                        Se connecter
-                    </button>
-
+                    <p id="message-erreur"></p>
+                    
+                     <button type="submit" class="login-btn">Connexion</button>
                 </form>
 
                 <div class="pas-de-compte">
@@ -247,7 +251,7 @@
 
         </div>
 
-    
+    <script src="script-connexion.js"></script>
 
 </body>
 </html>
