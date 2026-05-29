@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Admin — SmartCampus</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="../images/logo-blanc.png" alt="logo">
+    </div>
+    <nav class="nav">
+      <a href="dashboard-admin.html" class="nav-item active">🏠 Tableau de bord</a>
+      <a href="emploi-du-temps.html" class="nav-item">📅 Gestion emploi du temps</a>
+      <a href="utilisateurs.html"    class="nav-item">👥 Gestion des utilisateurs</a>
+      <a href="enseignants.html"     class="nav-item">🎓 Gestion des enseignants</a>
+      <a href="eleves.html"          class="nav-item">👤 Gestion des élèves</a>
+      <a href="inscriptions.html"    class="nav-item">📋 Gestion des inscriptions</a>
+      <a href="mon-profil.html"      class="nav-item">👤 Mon Profil</a>
+    </nav>
+    <a href="../connexion.html" class="nav-logout">🚪 Déconnexion</a>
+  </aside>
+
+  <main class="main">
+
+    <div class="topbar">
+      <div>
+        <h1>Tableau de Bord</h1>
+        <p>Bienvenue Prénom Admin</p>
+      </div>
+      <div class="topbar-right">
+        <button class="btn-outline">Mon compte</button>
+        <button class="btn-primary">Profil Admin</button>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">👨‍🎓</div>
+        <div class="stat-value">--</div>
+        <div class="stat-label">Nombre d'élèves</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🎓</div>
+        <div class="stat-value">--</div>
+        <div class="stat-label">Nombre de classes</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">👨‍🏫</div>
+        <div class="stat-value">--</div>
+        <div class="stat-label">Nombre de profs</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📋</div>
+        <div class="stat-value">--</div>
+        <div class="stat-label">Inscriptions en attente</div>
+      </div>
+    </div>
+
+    <div class="content-grid">
+
+      <div class="card">
+        <div class="card-title">👨‍🏫 Derniers enseignants ajoutés</div>
+        <div class="cours-item">
+          <div class="cours-dot"></div>
+          <div>
+            <div class="cours-name">--</div>
+            <div class="cours-info">--</div>
+          </div>
+        </div>
+        <div class="cours-item">
+          <div class="cours-dot"></div>
+          <div>
+            <div class="cours-name">--</div>
+            <div class="cours-info">--</div>
+          </div>
+        </div>
+        <button class="btn-full">Voir tous les enseignants</button>
+      </div>
+
+      <div class="card">
+        <div class="card-title">👤 Derniers élèves ajoutés</div>
+        <div class="cours-item">
+          <div class="cours-dot"></div>
+          <div>
+            <div class="cours-name">--</div>
+            <div class="cours-info">--</div>
+          </div>
+        </div>
+        <div class="cours-item">
+          <div class="cours-dot"></div>
+          <div>
+            <div class="cours-name">--</div>
+            <div class="cours-info">--</div>
+          </div>
+        </div>
+        <button class="btn-full">Voir tous les élèves</button>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🔔 Notifications</div>
+        <div class="notif-item">
+          <span class="notif-dot green"></span>
+          <span>--</span>
+        </div>
+        <div class="notif-item">
+          <span class="notif-dot blue"></span>
+          <span>--</span>
+        </div>
+        <div class="notif-item">
+          <span class="notif-dot orange"></span>
+          <span>--</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+</body>
+</html>
