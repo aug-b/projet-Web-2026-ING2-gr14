@@ -3,7 +3,7 @@
 session_start();
 
 if(!isset($_POST["email"]) || !isset($_POST["password"])){
-    header("Location: connexion.html");
+    header("Location: connexion/connexion.html");
     exit();
 }
 $email = $_POST["email"];
