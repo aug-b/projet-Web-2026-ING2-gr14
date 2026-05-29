@@ -6,51 +6,28 @@
 <head>
     <meta charset="utf-8">
     <title>Dashboard étudiant</title>
-    <link rel="stylesheet" href="menu-dashboard.css">
-    <link rel="stylesheet" href="dashboard-etudiant.css">
+    <link rel="stylesheet" href="style.css">
     
 </head>
 
 <body>
+<div class="layout">
 
-    <nav>
-
-        <div class="haut-menu">
-            <img src="images/logo-blanc.png" alt="logo-smartCampus">
-        </div>
-
-        <ul>
-
-            <li>
-                <a href="dashboard-etudiant.php">🏠 Tableau de bord</a>
-            </li>
-
-            <li>
-                <a href="planning-etudiant.php">📅 Planning</a>
-            </li>
-
-            <li>
-                <a href="notes-eleve.php">📝 Notes</a>
-            </li>
-
-            <li>
-                <a href="presence.php">✅ Présences</a>
-            </li>
-
-            <li>
-                <a href="profil.php">👤 Profil</a>
-            </li>
-
-            <li>
-                <a href="deconnexion.php">🚪 Déconnexion</a>
-            </li>
-
-        </ul>
-
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+     <a href="dashboard-etudiant.php"><img src="images/logo-blanc.png" alt="logo"></a>
+    </div>
+    <nav class="nav">
+<a href="dashboard-etudiant.php" class="nav-item active">🏠 Tableau de bord</a>
+<a href="planning-eleve.php" class="nav-item">📅 Planning</a>
+      <a href="notes-eleve.php" class="nav-item">📝 Notes</a>
+      <a href="presences-eleve.php" class="nav-item">✅ Présences</a>
+      <a href="profil-eleve.php" class="nav-item">👤 Profil</a>
     </nav>
-
+    <a href="deconnexion.php" class="nav-logout">🚪 Déconnexion</a>
+  </aside>
  
-<main>
+<main class="main">
 
     <div class="titre-page">
         <h1>Tableau de bord</h1>
