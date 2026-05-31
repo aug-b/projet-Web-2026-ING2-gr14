@@ -129,7 +129,7 @@ if (!empty($notes_eleve)) {
             <a href="profil-prof.php" class="nav-item">👤 Profil</a>
         </nav>
 
-        <a href="connexion.php" class="nav-logout">🚪 Déconnexion</a>
+        <a href="../connexion/connexion.php" class="nav-logout">🚪 Déconnexion</a>
     </aside>
 
     <main class="main">
@@ -193,7 +193,7 @@ if (!empty($notes_eleve)) {
                     <div class="eleve-header">
 
                         <div class="photo-mini">
-                            <img src="<?= !empty($eleve_selectionne['photo']) ? htmlspecialchars($eleve_selectionne['photo']) : 'images/default.png' ?>" alt="photo">
+                            <img src="<?= !empty($eleve_selectionne['photo']) ? htmlspecialchars($eleve_selectionne['photo']) : '../images/default.png' ?>" alt="photo">
                         </div>
 
                         <div>
