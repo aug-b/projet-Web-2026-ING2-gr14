@@ -3,10 +3,10 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
-require_once("connexion.php");
+require_once("../connexion/connexion.php");
 
 if (!isset($_SESSION["id_utilisateur"])) {
-    header("Location: connexion.html");
+    header("Location: ../connexion/connexion.html");
     exit();
 }
 
@@ -36,7 +36,7 @@ if (!$prof) {
 <head>
     <meta charset="UTF-8">
     <title>Profil Professeur — SmartCampus</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
@@ -46,7 +46,7 @@ if (!$prof) {
   <aside class="sidebar">
         <div class="sidebar-logo">
             <a href="dashboard-prof.php">
-                <img src="images/logo-blanc.png" alt="logo">
+                <img src="../images/logo-blanc.png" alt="logo">
             </a>
         </div>
 
@@ -58,7 +58,7 @@ if (!$prof) {
             <a href="profil-prof.php" class="nav-item active">👤 Profil</a>
         </nav>
 
-        <a href="deconnexion.php" class="nav-logout">🚪 Déconnexion</a>
+        <a href="../connexion/connexion.php" class="nav-logout">🚪 Déconnexion</a>
     </aside>
 
     <main class="main">
