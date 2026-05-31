@@ -5,31 +5,31 @@ error_reporting(E_ALL);
 session_start();
 require_once '../config/db.php';
 
-// Accepter une demande
-if (isset($_GET['accepter'])) {
-    $id = $_GET['accepter'];
-    
-    // Récupère les infos de la demande
+// Accepter une demande avec rôle choisi par l'admin
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'accepter') {
+    $id   = $_POST['id_attente'];
+    $role = $_POST['role'];
+
     $stmt = $pdo->prepare("SELECT * FROM utilisateur_en_attente WHERE id_attente = ?");
     $stmt->execute([$id]);
     $demande = $stmt->fetch();
 
     if ($demande) {
-        // Crée l'utilisateur
         $pdo->prepare("INSERT INTO utilisateur (nom, prenom, email, mot_de_passe) VALUES (?, ?, ?, ?)")
             ->execute([$demande['nom'], $demande['prenom'], $demande['email'], $demande['mot_de_passe']]);
         $id_user = $pdo->lastInsertId();
 
-        // Assigne le rôle
-        if ($demande['role'] === 'eleve') {
+        if ($role === 'eleve') {
             $pdo->prepare("INSERT INTO eleve (id_utilisateur, numero_eleve, niveau_scolaire) VALUES (?, ?, ?)")
-                ->execute([$id_user, 'E'.str_pad($id_user,3,'0',STR_PAD_LEFT), 'Seconde']);
-        } elseif ($demande['role'] === 'enseignant') {
+                ->execute([$id_user, 'E'.str_pad($id_user, 3, '0', STR_PAD_LEFT), 'Seconde']);
+        } elseif ($role === 'enseignant') {
             $pdo->prepare("INSERT INTO enseignant (id_utilisateur, specialite) VALUES (?, ?)")
                 ->execute([$id_user, '']);
+        } elseif ($role === 'admin') {
+            $pdo->prepare("INSERT INTO admin (id_utilisateur) VALUES (?)")
+                ->execute([$id_user]);
         }
 
-        // Met à jour le statut
         $pdo->prepare("UPDATE utilisateur_en_attente SET statut = 'accepte' WHERE id_attente = ?")
             ->execute([$id]);
     }
@@ -46,7 +46,7 @@ if (isset($_GET['refuser'])) {
 }
 
 // Demande sélectionnée
-$id_sel  = $_GET['id'] ?? null;
+$id_sel      = $_GET['id'] ?? null;
 $demande_sel = null;
 if ($id_sel) {
     $stmt = $pdo->prepare("SELECT * FROM utilisateur_en_attente WHERE id_attente = ?");
@@ -125,7 +125,14 @@ $demandes = $pdo->query("
                   <?php echo htmlspecialchars($d['prenom'].' '.$d['nom']); ?>
                 </div>
                 <div style="font-size:11px;color:#94a3b8">
-                  <?php echo htmlspecialchars($d['role']); ?> —
+                  <?php
+                  echo match($d['role']) {
+                    'eleve'      => '👤 Élève',
+                    'enseignant' => '🎓 Enseignant',
+                    'admin'      => '⚙️ Admin',
+                    default      => htmlspecialchars($d['role'])
+                  };
+                  ?> —
                   <?php echo date('d/m/Y', strtotime($d['date_demande'])); ?>
                 </div>
               </div>
@@ -155,26 +162,61 @@ $demandes = $pdo->query("
             </div>
             <div class="profil-info-item">
               <span class="profil-info-label">Rôle demandé</span>
-              <span><?php echo htmlspecialchars($demande_sel['role']); ?></span>
+              <span>
+                <?php
+                echo match($demande_sel['role']) {
+                  'eleve'      => '👤 Élève',
+                  'enseignant' => '🎓 Enseignant',
+                  'admin'      => '⚙️ Administrateur',
+                  default      => htmlspecialchars($demande_sel['role'])
+                };
+                ?>
+              </span>
             </div>
             <div class="profil-info-item">
               <span class="profil-info-label">Date de demande</span>
               <span><?php echo date('d/m/Y H:i', strtotime($demande_sel['date_demande'])); ?></span>
             </div>
           </div>
-          <div style="display:flex;gap:10px;margin-top:16px">
-            <a href="inscriptions.php?accepter=<?php echo $demande_sel['id_attente']; ?>"
-               style="flex:1">
-              <button class="btn-primary" style="width:100%">✅ Accepter</button>
-            </a>
-            <a href="inscriptions.php?refuser=<?php echo $demande_sel['id_attente']; ?>"
-               onclick="return confirm('Refuser cette demande ?')"
-               style="flex:1">
-              <button class="btn-outline" style="width:100%;color:#dc2626;border-color:#fecaca">
-                ❌ Refuser
+
+          <!-- Choix du rôle par l'admin -->
+          <form method="POST" action="inscriptions.php?id=<?php echo $demande_sel['id_attente']; ?>" style="margin-top:16px">
+            <input type="hidden" name="action" value="accepter">
+            <input type="hidden" name="id_attente" value="<?php echo $demande_sel['id_attente']; ?>">
+
+            <div class="profil-info-item" style="margin-bottom:14px">
+              <span class="profil-info-label">Attribuer le rôle</span>
+              <select name="role" class="form-input">
+                <option value="eleve"
+                  <?php echo $demande_sel['role']==='eleve' ? 'selected' : ''; ?>>
+                  👤 Élève
+                </option>
+                <option value="enseignant"
+                  <?php echo $demande_sel['role']==='enseignant' ? 'selected' : ''; ?>>
+                  🎓 Enseignant
+                </option>
+                <option value="admin"
+                  <?php echo $demande_sel['role']==='admin' ? 'selected' : ''; ?>>
+                  ⚙️ Administrateur
+                </option>
+              </select>
+            </div>
+
+            <div style="display:flex;gap:10px">
+              <button type="submit" class="btn-primary" style="flex:1">
+                ✅ Accepter avec ce rôle
               </button>
-            </a>
-          </div>
+              <a href="inscriptions.php?refuser=<?php echo $demande_sel['id_attente']; ?>"
+                 onclick="return confirm('Refuser cette demande ?')"
+                 style="flex:1">
+                <button type="button" class="btn-outline"
+                        style="width:100%;color:#dc2626;border-color:#fecaca">
+                  ❌ Refuser
+                </button>
+              </a>
+            </div>
+          </form>
+
         <?php else : ?>
           <p style="color:#94a3b8;font-size:13px">
             Sélectionnez une demande dans la liste pour voir les détails.
