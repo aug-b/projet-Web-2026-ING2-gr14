@@ -1,9 +1,9 @@
 <?php
 session_start();
-require_once("connexion.php");
+require_once("../connexion/connexion.php");
 
 if (!isset($_SESSION["id_utilisateur"])) {
-    header("Location: connexion.html");
+    header("Location: ../connexion/connexion.html");
     exit();
 }
 
@@ -19,7 +19,7 @@ if (
     $confirm = $_POST["confirm_mdp"];
 
     if ($nouveau !== $confirm) {
-        header("Location: changer-mdp-prof.html?error=confirm");
+        header("Location: ../prof/changer-mdp-prof.html?error=confirm");
         exit();
     }
 
@@ -32,7 +32,7 @@ if (
     $user = $result->fetch_assoc();
 
     if (!$user || $user["mot_de_passe"] !== $ancien) {
-        header("Location: changer-mdp-prof.html?error=ancien");
+        header("Location: ../prof/changer-mdp-prof.html?error=ancien");
         exit();
     }
 
@@ -41,9 +41,9 @@ if (
     $stmt->bind_param("si", $nouveau, $id_utilisateur);
     $stmt->execute();
 
-    header("Location: profil-prof.php?success=mdp");
+    header("Location: ../prof/profil-prof.php?success=mdp");
     exit();
 }
 
-header("Location: changer-mdp.html");
+header("Location: ../prof/changer-mdp-prof.html");
 exit();
