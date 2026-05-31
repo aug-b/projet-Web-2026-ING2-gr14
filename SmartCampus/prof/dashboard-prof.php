@@ -1,10 +1,10 @@
 <?php
 
 session_start();
-require_once("connexion.php");
+require_once("../connexion/connexion.php");
 
 if (!isset($_SESSION["id_utilisateur"])) {
-    header("Location: connexion.html");
+    header("Location: ../connexion/connexion.html");
     exit();
 }
 
@@ -37,7 +37,7 @@ $prochains_cours = $conn->query("
 <head>
     <meta charset="UTF-8">
     <title>Dashboard Professeur</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="smartcampus/style.css">
 </head>
 
 <body>
@@ -48,7 +48,7 @@ $prochains_cours = $conn->query("
 
         <div class="sidebar-logo">
             <a href="dashboard-prof.php">
-                <img src="images/logo-blanc.png" alt="logo">
+                <img src="../images/logo-blanc.png" alt="logo">
             </a>
         </div>
 
