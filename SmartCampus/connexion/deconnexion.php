@@ -5,7 +5,7 @@ session_unset();
 
 session_destroy();
 
-header("Location: connexion.html");
+header("Location: ../connexion/connexion.html");
 exit();
 
 ?>

@@ -43,17 +43,17 @@ if ($result->num_rows > 0) {
     $_SESSION["role"] = $user["role"];
 
     if ($user["role"] == "admin") {
-        header("Location: dashboard-admin.php");
+        header("Location: ../admin/dashboard-admin.php");
         exit();
     }
 
     elseif ($user["role"] == "enseignant") {
-        header("Location: dashboard-prof.php");
+        header("Location: ../prof/dashboard-prof.php");
         exit();
     }
 
     elseif ($user["role"] == "eleve") {
-        header("Location: dashboard-etudiant.php");
+        header("Location: ../eleve/dashboard-etudiant.php");
         exit();
     }
 
