@@ -3,10 +3,10 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
-require_once("connexion.php");
+require_once("../connexion/connexion.php");
 
 if (!isset($_SESSION["id_utilisateur"])) {
-    header("Location: connexion.html");
+    header("Location: ../connexion/connexion.html");
     exit();
 }
 
@@ -58,14 +58,14 @@ $vendredi->modify('+4 days');
 <head>
   <meta charset="UTF-8">
   <title>Planning Élève — SmartCampus</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <div class="layout">
 
   <aside class="sidebar">
     <div class="sidebar-logo">
-      <a href="dashboard-etudiant.php"><img src="images/logo-blanc.png" alt="logo"></a>
+      <a href="dashboard-etudiant.php"><img src="../images/logo-blanc.png" alt="logo"></a>
     </div>
     <nav class="nav">
       <a href="dashboard-etudiant.php" class="nav-item">🏠 Tableau de bord</a>
@@ -74,7 +74,7 @@ $vendredi->modify('+4 days');
       <a href="presences-eleve.php" class="nav-item">✅ Présences</a>
       <a href="profil-eleve.php" class="nav-item">👤 Profil</a>
     </nav>
-    <a href="deconnexion.php" class="nav-logout">🚪 Déconnexion</a>
+    <a href="../connexion/deconnexion.php" class="nav-logout">🚪 Déconnexion</a>
   </aside>
 
   <main class="main">

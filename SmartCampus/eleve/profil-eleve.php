@@ -3,10 +3,10 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
-require_once("connexion.php");
+require_once("../connexion/connexion.php");
 
 if (!isset($_SESSION["id_utilisateur"])) {
-    header("Location: connexion.html");
+    header("Location: ../connexion/connexion.html");
     exit();
 }
 
@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"])) {
 <head>
     <meta charset="UTF-8">
     <title>Profil Élève — SmartCampus</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"])) {
 
     <aside class="sidebar">
         <div class="sidebar-logo">
-          <a href="dashboard-etudiant.php"><img src="images/logo-blanc.png" alt="logo"></a>
+          <a href="dashboard-etudiant.php"><img src="../images/logo-blanc.png" alt="logo"></a>
         </div>
 
         <nav class="nav">
@@ -94,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"])) {
             <a href="profil-eleve.php" class="nav-item active">👤 Profil</a>
         </nav>
 
-        <a href="deconnexion.php" class="nav-logout">🚪 Déconnexion</a>
+        <a href="../connexion/deconnexion.php" class="nav-logout">🚪 Déconnexion</a>
     </aside>
 
     <main class="main">
@@ -109,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"])) {
 
     <div class="profile-image">
         <img
-            src="<?= !empty($eleve['photo']) ? htmlspecialchars($eleve['photo']) : 'images/default.png' ?>"
+            src="<?= !empty($eleve['photo']) ? htmlspecialchars($eleve['photo']) : '../images/default.png' ?>"
             alt="photo profil">
     </div>
 

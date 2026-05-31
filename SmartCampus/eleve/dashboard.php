@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once("connexion.php");
+require_once("../connexion/connexion.php");
 
 if (!isset($_SESSION["id_utilisateur"])) {
     header("Location: connexion.html");

@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <title>Dashboard étudiant</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     
 </head>
 
@@ -15,7 +15,7 @@
 
   <aside class="sidebar">
     <div class="sidebar-logo">
-     <a href="dashboard-etudiant.php"><img src="images/logo-blanc.png" alt="logo"></a>
+     <a href="dashboard-etudiant.php"><img src="../images/logo-blanc.png" alt="logo"></a>
     </div>
     <nav class="nav">
 <a href="dashboard-etudiant.php" class="nav-item active">🏠 Tableau de bord</a>
@@ -24,7 +24,7 @@
       <a href="presences-eleve.php" class="nav-item">✅ Présences</a>
       <a href="profil-eleve.php" class="nav-item">👤 Profil</a>
     </nav>
-    <a href="deconnexion.php" class="nav-logout">🚪 Déconnexion</a>
+    <a href="../connexion/deconnexion.php" class="nav-logout">🚪 Déconnexion</a>
   </aside>
  
 <main class="main">
@@ -36,7 +36,7 @@
 
     <div class="carte-profil">
         <div class="photo-profil">
-            <img src="<?= !empty($profil['photo']) ? htmlspecialchars($profil['photo']) : 'images/default.png' ?>" alt="photo profil">
+            <img src="<?= !empty($profil['photo']) ? htmlspecialchars($profil['photo']) : '../images/default.png' ?>" alt="photo profil">
         </div>
 
         <div class="infos-profil">
