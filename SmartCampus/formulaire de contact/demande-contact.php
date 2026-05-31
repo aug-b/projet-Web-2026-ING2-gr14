@@ -2,7 +2,7 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-require_once("connexion.php");
+require_once("../connexion/connexion.php");
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     die("Accès interdit");
@@ -14,13 +14,14 @@ $email = $_POST["email"] ?? "";
 $telephone = $_POST["telephone"] ?? "";
 $date_naissance = $_POST["date_naissance"] ?? "";
 
-$mot_de_passe = "temporaire";
+$mot_de_passe = $_POST["password"];
+
 
 $photo = NULL;
 $photo_id = NULL;
 
 
-$dossierPhoto = "images/profils/";
+$dossierPhoto = "../images/profils/";
 
 if (!is_dir($dossierPhoto)) {
     mkdir($dossierPhoto, 0777, true);
@@ -47,7 +48,7 @@ if (
     }
 }
 
-$dossierId = "images/pieces_identite/";
+$dossierId = "../images/pieces_identite/";
 
 if (!is_dir($dossierId)) {
     mkdir($dossierId, 0777, true);
@@ -123,7 +124,7 @@ if ($stmt->execute()) {
     </p>
 
     <div style='text-align:center;'>
-        <a href='connexion.html'>
+        <a href='../connexion/connexion.html'>
             Retour à la connexion
         </a>
     </div>

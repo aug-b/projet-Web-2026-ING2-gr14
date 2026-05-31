@@ -237,11 +237,11 @@
 <body>
 
             <header>
-               <img src="images/logo-blanc.png" alt="logo"> 
+               <img src="../images/logo-blanc.png" alt="logo"> 
             </header>
 
         <div class = "illustration">
-            <img src="images/illustration.png" alt="illustration">
+            <img src="../images/illustration.png" alt="illustration">
 
         </div>
 
@@ -318,6 +318,11 @@
 
                                 </label>
 
+                            </div>
+
+                            <div class="input-group">
+                                <label>Mot de passe</label>
+                                 <input type="password" name="password" placeholder="Mot de passe" required>
                             </div>
 
                         </div>
