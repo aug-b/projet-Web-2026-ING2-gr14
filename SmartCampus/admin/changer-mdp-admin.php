@@ -3,7 +3,7 @@ session_start();
 require_once("smartcampus/connexion/connexion.php");
 
 if (!isset($_SESSION["id_utilisateur"])) {
-    header("Location: smartcampus/connexiob/connexion.html");
+    header("Location: smartcampus/connexion/connexion.html");
     exit();
 }
 
