@@ -180,7 +180,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"])) {
                 </div>
                 <br>
 
-                <a href="changer-mdp-eleve.php" class="security-btn">
+                <a href="changer-mdp.html" class="security-btn">
                Changer le mot de passe
     </a>
 

@@ -53,7 +53,7 @@ $presents = count(array_filter($presences, fn($p) => $p['statut'] === 'present')
       <a href="presences-eleve.php" class="nav-item active">✅ Présences</a>
       <a href="profil-eleve.php" class="nav-item">👤 Profil</a>
     </nav>
-    <a href="../connexion.html" class="nav-logout">🚪 Déconnexion</a>
+    <a href="connexion.html" class="nav-logout">🚪 Déconnexion</a>
   </aside>
 
   <main class="main">
