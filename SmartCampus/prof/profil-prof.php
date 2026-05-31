@@ -58,7 +58,7 @@ if (!$prof) {
             <a href="profil-prof.php" class="nav-item active">👤 Profil</a>
         </nav>
 
-        <a href="../connexion/connexion.php" class="nav-logout">🚪 Déconnexion</a>
+        <a href="../connexion/connexion.html" class="nav-logout">🚪 Déconnexion</a>
     </aside>
 
     <main class="main">
@@ -73,7 +73,7 @@ if (!$prof) {
 
                     <div class="profile-image">
                         <img
-                            src="<?= !empty($prof['photo']) ? htmlspecialchars($prof['photo']) : 'images/default.png' ?>"
+                            src="<?= !empty($prof['photo']) ? htmlspecialchars($prof['photo']) : '../images/default.png' ?>"
                             alt="photo profil">
                     </div>
 

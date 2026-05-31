@@ -175,7 +175,7 @@ $taux = $nb_total > 0 ? round($nb_present / $nb_total * 100) : 0;
             <a href="profil-prof.php" class="nav-item">👤 Profil</a>
         </nav>
 
-        <a href="../connexion/connexion.php" class="nav-logout">🚪 Déconnexion</a>
+        <a href="../connexion/connexion.html" class="nav-logout">🚪 Déconnexion</a>
     </aside>
 
     <main class="main">

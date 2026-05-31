@@ -78,11 +78,10 @@ CREATE TABLE note (
 CREATE TABLE presence (
     id_presence INT PRIMARY KEY AUTO_INCREMENT,
     date_presence DATE,
-    statut VARCHAR(50),
+    statut ENUM('present','absent','retard') NOT NULL,
     id_eleve INT NOT NULL,
     id_cours INT NOT NULL,
-    FOREIGN KEY (id_eleve) REFERENCES eleve(id_utilisateur) ON DELETE CASCADE,
-    FOREIGN KEY (id_cours) REFERENCES cours(id_cours) ON DELETE CASCADE
+    id_creneau INT NOT NULL
 );
 
 CREATE TABLE emploi_du_temps (

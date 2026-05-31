@@ -81,7 +81,7 @@ $vendredi->modify('+4 days');
             <a href="profil-prof.php" class="nav-item">👤 Profil</a>
         </nav>
 
-        <a href="../connexion/connexion.php" class="nav-logout">🚪 Déconnexion</a>
+        <a href="../connexion/connexion.html" class="nav-logout">🚪 Déconnexion</a>
 
     </aside>
 

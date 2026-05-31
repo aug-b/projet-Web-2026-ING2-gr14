@@ -74,7 +74,7 @@ $prochains_cours = $conn->query("
             </a>
         </nav>
 
-        <a href="connexion.php" class="nav-logout">
+        <a href="../connexion/connexion.html" class="nav-logout">
             🚪 Déconnexion
         </a>
 
