@@ -37,7 +37,7 @@ $prochains_cours = $conn->query("
 <head>
     <meta charset="UTF-8">
     <title>Dashboard Professeur</title>
-    <link rel="stylesheet" href="smartcampus/style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
@@ -74,7 +74,7 @@ $prochains_cours = $conn->query("
             </a>
         </nav>
 
-        <a href="deconnexion.php" class="nav-logout">
+        <a href="connexion.php" class="nav-logout">
             🚪 Déconnexion
         </a>
 
@@ -91,7 +91,7 @@ $prochains_cours = $conn->query("
 
             <div class="photo-profil">
                 <img
-                    src="<?= !empty($profil['photo']) ? htmlspecialchars($profil['photo']) : 'images/default.png' ?>"
+                    src="<?= !empty($profil['photo']) ? htmlspecialchars($profil['photo']) : '../images/default.png' ?>"
                     alt="photo profil">
             </div>
 
