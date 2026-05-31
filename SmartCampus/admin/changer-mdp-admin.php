@@ -1,9 +1,9 @@
 <?php
 session_start();
-require_once("connexion.php");
+require_once("smartcampus/connexion/connexion.php");
 
 if (!isset($_SESSION["id_utilisateur"])) {
-    header("Location: connexion.html");
+    header("Location: smartcampus/connexiob/connexion.html");
     exit();
 }
 
@@ -19,7 +19,7 @@ if (
     $confirm = $_POST["confirm_mdp"];
 
     if ($nouveau !== $confirm) {
-        header("Location: changer-mdp-admin.html?error=confirm");
+        header("Location: smartcampus/admin/changer-mdp-admin.html?error=confirm");
         exit();
     }
 
@@ -32,7 +32,7 @@ if (
     $user = $result->fetch_assoc();
 
     if (!$user || $user["mot_de_passe"] !== $ancien) {
-        header("Location: changer-mdp-admin.html?error=ancien");
+        header("Location: smartcampus/admin/changer-mdp-admin.html?error=ancien");
         exit();
     }
 
@@ -41,9 +41,9 @@ if (
     $stmt->bind_param("si", $nouveau, $id_utilisateur);
     $stmt->execute();
 
-    header("Location: mon-profil.php?success=mdp");
+    header("Location: smartcampus/admin/mon-profil.php?success=mdp");
     exit();
 }
 
-header("Location: changer-mdp-admin.html");
+header("Location: smartcampus/admin/changer-mdp-admin.html");
 exit();

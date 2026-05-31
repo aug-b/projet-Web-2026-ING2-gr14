@@ -3,10 +3,10 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
-require_once("connexion.php");
+require_once("smartcampus/connexion/connexion.php");
 
 if (!isset($_SESSION["id_utilisateur"])) {
-    header("Location: connexion.html");
+    header("Location: smartcampus/connexion/connexion.html");
     exit();
 }
 
@@ -94,7 +94,7 @@ while ($row = $result->fetch_assoc()) {
 <head>
   <meta charset="UTF-8">
   <title>Dashboard Admin — SmartCampus</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="smartcampus/style.css">
 </head>
 <body>
 
@@ -102,18 +102,18 @@ while ($row = $result->fetch_assoc()) {
 
   <aside class="sidebar">
     <div class="sidebar-logo">
-      <img src="images/logo-blanc.png" alt="logo">
+      <img src="smartcampus/images/logo-blanc.png" alt="logo">
     </div>
     <nav class="nav">
-      <a href="dashboard-admin.php" class="nav-item active">🏠 Tableau de bord</a>
-      <a href="emploi-du-temps.php" class="nav-item">📅 Gestion emploi du temps</a>
-      <a href="utilisateurs.php"    class="nav-item">👥 Gestion des utilisateurs</a>
-      <a href="enseignants.php"     class="nav-item">🎓 Gestion des enseignants</a>
-      <a href="eleves.php"          class="nav-item">👤 Gestion des élèves</a>
-      <a href="inscriptions.php"    class="nav-item">📋 Gestion des inscriptions</a>
-      <a href="mon-profil.php"      class="nav-item">👤 Mon Profil</a>
+      <a href="smartcampus/admin/dashboard-admin.php" class="nav-item active">🏠 Tableau de bord</a>
+      <a href="smartcampus/admin/emploi-du-temps.php" class="nav-item">📅 Gestion emploi du temps</a>
+      <a href="smartcampus/admin/utilisateurs.php"    class="nav-item">👥 Gestion des utilisateurs</a>
+      <a href="smartcampus/admin/enseignants.php"     class="nav-item">🎓 Gestion des enseignants</a>
+      <a href="smartcampus/admin/eleves.php"          class="nav-item">👤 Gestion des élèves</a>
+      <a href="smartcampus/admin/inscriptions.php"    class="nav-item">📋 Gestion des inscriptions</a>
+      <a href="smartcampus/admin/mon-profil.php"      class="nav-item">👤 Mon Profil</a>
     </nav>
-    <a href="connexion.html" class="nav-logout">🚪 Déconnexion</a>
+    <a href="smartcampus/connexion/connexion.html" class="nav-logout">🚪 Déconnexion</a>
   </aside>
 
   <main class="main">

@@ -3,10 +3,10 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
-require_once("connexion.php");
+require_once("smartcampus/connexion/connexion.php");
 
 if (!isset($_SESSION["id_utilisateur"])) {
-    header("Location: connexion.html");
+    header("Location: smartcampus/connexion/connexion.html");
     exit();
 }
 
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"]) && $_POST["
         $stmt->execute();
     }
 
-    header("Location: eleves.php?success=1");
+    header("Location: smartcampus/admin/eleves.php?success=1");
     exit();
 }
 
@@ -70,7 +70,7 @@ if (isset($_GET["supprimer"])) {
     $stmt->bind_param("i", $id);
     $stmt->execute();
 
-    header("Location: eleves.php");
+    header("Location: smartcampus/admin/eleves.php");
     exit();
 }
 
@@ -158,7 +158,7 @@ while ($row = $result->fetch_assoc()) {
 <head>
   <meta charset="UTF-8">
   <title>Élèves — SmartCampus</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="smartcampus/style.css">
 </head>
 
 <body>
@@ -167,20 +167,20 @@ while ($row = $result->fetch_assoc()) {
 
   <aside class="sidebar">
     <div class="sidebar-logo">
-      <img src="images/logo-blanc.png" alt="logo">
+      <img src="smartcampus/mages/logo-blanc.png" alt="logo">
     </div>
 
     <nav class="nav">
-      <a href="dashboard-admin.php" class="nav-item">🏠 Tableau de bord</a>
-      <a href="planning-admin.php" class="nav-item">📅 Gestion emploi du temps</a>
-      <a href="utilisateurs.php" class="nav-item">👥 Gestion des utilisateurs</a>
-      <a href="enseignants.php" class="nav-item">🎓 Gestion des enseignants</a>
-      <a href="eleves.php" class="nav-item active">👤 Gestion des élèves</a>
-      <a href="inscriptions.php" class="nav-item">📋 Gestion des inscriptions</a>
-      <a href="mon-profil.php" class="nav-item">👤 Mon Profil</a>
+      <a href="smartcampus/admin/dashboard-admin.php" class="nav-item">🏠 Tableau de bord</a>
+      <a href="smartcampus/admin/planning-admin.php" class="nav-item">📅 Gestion emploi du temps</a>
+      <a href="smartcampus/admin/utilisateurs.php" class="nav-item">👥 Gestion des utilisateurs</a>
+      <a href="smartcampus/admin/enseignants.php" class="nav-item">🎓 Gestion des enseignants</a>
+      <a href="smartcampus/admin/eleves.php" class="nav-item active">👤 Gestion des élèves</a>
+      <a href="smartcampus/admin/inscriptions.php" class="nav-item">📋 Gestion des inscriptions</a>
+      <a href="smartcampus/admin/mon-profil.php" class="nav-item">👤 Mon Profil</a>
     </nav>
 
-    <a href="connexion.php" class="nav-logout">🚪 Déconnexion</a>
+    <a href="smartcampus/connexion/connexion.php" class="nav-logout">🚪 Déconnexion</a>
   </aside>
 
   <main class="main">
@@ -279,12 +279,12 @@ while ($row = $result->fetch_assoc()) {
                 <td><?php echo htmlspecialchars($eleve["niveau_scolaire"] ?? "--"); ?></td>
                 <td><?php echo htmlspecialchars($eleve["nom_classe"] ?? "--"); ?></td>
                 <td>
-                  <a href="modifier-eleve.php?id=<?php echo $eleve["id_utilisateur"]; ?>">
+                  <a href="smartcampus/admin/modifier-eleve.php?id=<?php echo $eleve["id_utilisateur"]; ?>">
                     <button class="btn-save">✏️ Modifier</button>
                   </a>
 
                   <a 
-                    href="eleves.php?supprimer=<?php echo $eleve["id_utilisateur"]; ?>"
+                    href="smartcampus/admin/eleves.php?supprimer=<?php echo $eleve["id_utilisateur"]; ?>"
                     onclick="return confirm('Supprimer cet élève ?')"
                   >
                     <button class="btn-lock">🗑️ Supprimer</button>
@@ -336,10 +336,10 @@ while ($row = $result->fetch_assoc()) {
             <div class="profil-info-item">
               <span class="profil-info-label">Niveau</span>
               <select class="form-input" name="niveau">
-                <option value="ING1">6éme</option>
-                <option value="ING2">5éme</option>
-                <option value="ING3">4éme</option>
-                <option value="ING3">3éme</option>
+                <option value="ING1">second</option>
+                <option value="ING2">premiére</option>
+                <option value="ING3">terminal</option>
+            
               </select>
             </div>
 

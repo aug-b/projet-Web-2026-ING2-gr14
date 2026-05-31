@@ -3,10 +3,10 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
-require_once("connexion.php");
+require_once("smartcampus/connexion/connexion.php");
 
 if (!isset($_SESSION["id_utilisateur"])) {
-    header("Location: connexion.html");
+    header("Location: smartcampus/connexion/connexion.html");
     exit();
 }
 
@@ -110,7 +110,7 @@ if (isset($_GET["accepter"])) {
         $stmt->execute();
     }
 
-    header("Location: inscriptions.php?success=1");
+    header("Location: smartcampus/admin/inscriptions.php?success=1");
     exit();
 }
 
@@ -128,7 +128,7 @@ if (isset($_GET["refuser"])) {
     $stmt->bind_param("i", $id);
     $stmt->execute();
 
-    header("Location: inscriptions.php");
+    header("Location: smartcampus/admin/inscriptions.php");
     exit();
 }
 
@@ -172,7 +172,7 @@ while ($row = $result->fetch_assoc()) {
 <head>
   <meta charset="UTF-8">
   <title>Inscriptions — SmartCampus</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="smartcampus/style.css">
 </head>
 
 <body>
@@ -181,20 +181,20 @@ while ($row = $result->fetch_assoc()) {
 
   <aside class="sidebar">
     <div class="sidebar-logo">
-      <img src="images/logo-blanc.png" alt="logo">
+      <img src="smartcampus/images/logo-blanc.png" alt="logo">
     </div>
 
     <nav class="nav">
-      <a href="dashboard-admin.php" class="nav-item">🏠 Tableau de bord</a>
-      <a href="planning-admin.php" class="nav-item">📅 Gestion emploi du temps</a>
-      <a href="utilisateurs.php" class="nav-item">👥 Gestion des utilisateurs</a>
-      <a href="enseignants.php" class="nav-item">🎓 Gestion des enseignants</a>
-      <a href="eleves.php" class="nav-item">👤 Gestion des élèves</a>
-      <a href="inscriptions.php" class="nav-item active">📋 Gestion des inscriptions</a>
-      <a href="mon-profil.php" class="nav-item">👤 Mon Profil</a>
+      <a href="smartcampus/admin/dashboard-admin.php" class="nav-item">🏠 Tableau de bord</a>
+      <a href="smartcampus/admin/planning-admin.php" class="nav-item">📅 Gestion emploi du temps</a>
+      <a href="smartcampus/admin/utilisateurs.php" class="nav-item">👥 Gestion des utilisateurs</a>
+      <a href="smartcampus/admin/enseignants.php" class="nav-item">🎓 Gestion des enseignants</a>
+      <a href="smartcampus/admin/eleves.php" class="nav-item">👤 Gestion des élèves</a>
+      <a href="smartcampus/admin/inscriptions.php" class="nav-item active">📋 Gestion des inscriptions</a>
+      <a href="smartcampus/admin/mon-profil.php" class="nav-item">👤 Mon Profil</a>
     </nav>
 
-    <a href="connexion.php" class="nav-logout">🚪 Déconnexion</a>
+    <a href="smartcampus/connexion/connexion.php" class="nav-logout">🚪 Déconnexion</a>
   </aside>
 
   <main class="main">
@@ -230,7 +230,7 @@ while ($row = $result->fetch_assoc()) {
 
         <?php foreach ($demandes as $d) : ?>
           <a 
-            href="inscriptions.php?id=<?php echo $d["id_attente"]; ?>" 
+            href="smartcampus/admin/inscriptions.php?id=<?php echo $d["id_attente"]; ?>" 
             style="text-decoration:none;"
           >
             <div 
@@ -295,7 +295,7 @@ while ($row = $result->fetch_assoc()) {
 
           <div style="display:flex;gap:10px;margin-top:16px;">
             <a 
-              href="inscriptions.php?accepter=<?php echo $demande_sel["id_attente"]; ?>" 
+              href="smartcampus/admin/inscriptions.php?accepter=<?php echo $demande_sel["id_attente"]; ?>" 
               class="btn-primary" 
               style="text-align:center;text-decoration:none;flex:1;"
             >
@@ -303,7 +303,7 @@ while ($row = $result->fetch_assoc()) {
             </a>
 
             <a 
-              href="inscriptions.php?refuser=<?php echo $demande_sel["id_attente"]; ?>" 
+              href="smartcampus/admin/inscriptions.php?refuser=<?php echo $demande_sel["id_attente"]; ?>" 
               onclick="return confirm('Refuser cette demande ?')" 
               class="btn-outline" 
               style="text-align:center;text-decoration:none;color:#dc2626;border-color:#fecaca;flex:1;"

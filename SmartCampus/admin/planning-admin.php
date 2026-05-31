@@ -3,10 +3,10 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
-require_once("connexion.php");
+require_once("smartcampus/connexion/connexion.php");
 
 if (!isset($_SESSION["id_utilisateur"])) {
-    header("Location: connexion.html");
+    header("Location: smartcampus/connexion/connexion.html");
     exit();
 }
 
@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && ($_POST["action"] ?? "") === "ajout
     $check = $stmt->get_result()->fetch_assoc();
 
     if ($check["total"] > 0) {
-        header("Location: planning-admin.php?id_classe=$id_classe_post&error=conflit");
+        header("Location: smartcampus/admin/planning-admin.php?id_classe=$id_classe_post&error=conflit");
         exit();
     }
 
@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && ($_POST["action"] ?? "") === "ajout
     $stmt->bind_param("ii", $id_classe_post, $id_cours);
     $stmt->execute();
 
-    header("Location: planning-admin.php?id_classe=$id_classe_post&success=1");
+    header("Location: smartcampus/admin/planning-admin.php?id_classe=$id_classe_post&success=1");
     exit();
 }
 
@@ -101,7 +101,7 @@ if (isset($_GET["supprimer"])) {
     $stmt->bind_param("i", $id_creneau);
     $stmt->execute();
 
-    header("Location: planning-admin.php?id_classe=$id_classe_sel");
+    header("Location: smartcampus/admin/planning-admin.php?id_classe=$id_classe_sel");
     exit();
 }
 
@@ -181,7 +181,7 @@ $heures = ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00
 <head>
   <meta charset="UTF-8">
   <title>Planning — SmartCampus</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="smartcampus/style.css">
 </head>
 
 <body>
@@ -190,20 +190,20 @@ $heures = ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00
 
   <aside class="sidebar">
     <div class="sidebar-logo">
-      <img src="images/logo-blanc.png" alt="logo">
+      <img src="smartcampus/images/logo-blanc.png" alt="logo">
     </div>
 
     <nav class="nav">
-      <a href="dashboard-admin.php" class="nav-item">🏠 Tableau de bord</a>
-      <a href="planning-admin.php" class="nav-item active">📅 Gestion emploi du temps</a>
-      <a href="utilisateurs.php" class="nav-item">👥 Gestion des utilisateurs</a>
-      <a href="enseignants.php" class="nav-item">🎓 Gestion des enseignants</a>
-      <a href="eleves.php" class="nav-item">👤 Gestion des élèves</a>
-      <a href="inscriptions.php" class="nav-item">📋 Gestion des inscriptions</a>
-      <a href="mon-profil.php" class="nav-item">👤 Mon Profil</a>
+      <a href="smartcampus/admin/dashboard-admin.php" class="nav-item">🏠 Tableau de bord</a>
+      <a href="smartcampus/admin/planning-admin.php" class="nav-item active">📅 Gestion emploi du temps</a>
+      <a href="smartcampus/admin/utilisateurs.php" class="nav-item">👥 Gestion des utilisateurs</a>
+      <a href="smartcampus/admin/enseignants.php" class="nav-item">🎓 Gestion des enseignants</a>
+      <a href="smartcampus/admin/eleves.php" class="nav-item">👤 Gestion des élèves</a>
+      <a href="smartcampus/admin/inscriptions.php" class="nav-item">📋 Gestion des inscriptions</a>
+      <a href="smartcampus/admin/mon-profil.php" class="nav-item">👤 Mon Profil</a>
     </nav>
 
-    <a href="connexion.php" class="nav-logout">🚪 Déconnexion</a>
+    <a href="smartcampus/connexion/connexion.php" class="nav-logout">🚪 Déconnexion</a>
   </aside>
 
   <main class="main">
@@ -269,14 +269,14 @@ $heures = ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00
         <span style="float:right;display:flex;gap:8px;">
           <a 
             class="btn-outline" 
-            href="planning-admin.php?id_classe=<?php echo $id_classe_sel; ?>&semaine=<?php echo $offset - 1; ?>"
+            href="smartcampus/admin/planning-admin.php?id_classe=<?php echo $id_classe_sel; ?>&semaine=<?php echo $offset - 1; ?>"
           >
             ◀
           </a>
 
           <a 
             class="btn-outline" 
-            href="planning-admin.php?id_classe=<?php echo $id_classe_sel; ?>&semaine=<?php echo $offset + 1; ?>"
+            href="smartcampus/admin/planning-admin.php?id_classe=<?php echo $id_classe_sel; ?>&semaine=<?php echo $offset + 1; ?>"
           >
             ▶
           </a>
@@ -322,7 +322,7 @@ $heures = ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00
                   </div>
 
                   <a 
-                    href="planning-admin.php?id_classe=<?php echo $id_classe_sel; ?>&supprimer=<?php echo $c["id_creneau"]; ?>"
+                    href="smartcampus/admin/planning-admin.php?id_classe=<?php echo $id_classe_sel; ?>&supprimer=<?php echo $c["id_creneau"]; ?>"
                     onclick="return confirm('Supprimer ce créneau ?')"
                     style="color:white;font-size:11px;display:inline-block;margin-top:4px;"
                   >
@@ -353,7 +353,7 @@ $heures = ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00
           ➕ Ajouter un créneau
         </h2>
 
-        <form method="POST" action="planning-admin.php?id_classe=<?php echo $id_classe_sel; ?>">
+        <form method="POST" action="smartcampus/admin/planning-admin.php?id_classe=<?php echo $id_classe_sel; ?>">
           <input type="hidden" name="action" value="ajouter">
           <input type="hidden" name="id_classe" value="<?php echo htmlspecialchars($id_classe_sel); ?>">
 

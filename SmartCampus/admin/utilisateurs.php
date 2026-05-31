@@ -3,10 +3,10 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
-require_once("connexion.php");
+require_once("smartcampus/connexion/connexion.php");
 
 if (!isset($_SESSION["id_utilisateur"])) {
-    header("Location: connexion.html");
+    header("Location: smartcampus/connnexion/connexion.html");
     exit();
 }
 
@@ -21,7 +21,7 @@ if (isset($_GET["supprimer"])) {
     $stmt->bind_param("i", $id);
     $stmt->execute();
 
-    header("Location: utilisateurs.php");
+    header("Location: smartcampus/admin/utilisateurs.php");
     exit();
 }
 
@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && ($_POST["action"] ?? "") === "ajout
         $stmt->execute();
     }
 
-    header("Location: utilisateurs.php?success=1");
+    header("Location: smartcampus/admin/utilisateurs.php?success=1");
     exit();
 }
 
@@ -111,7 +111,7 @@ while ($row = $result->fetch_assoc()) {
 <head>
   <meta charset="UTF-8">
   <title>Utilisateurs — SmartCampus</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="smartcampus/style.css">
 </head>
 
 <body>
@@ -120,20 +120,20 @@ while ($row = $result->fetch_assoc()) {
 
   <aside class="sidebar">
     <div class="sidebar-logo">
-      <img src="images/logo-blanc.png" alt="logo">
+      <img src="smartcampus/images/logo-blanc.png" alt="logo">
     </div>
 
     <nav class="nav">
-      <a href="dashboard-admin.php" class="nav-item">🏠 Tableau de bord</a>
-      <a href="planning-admin.php" class="nav-item">📅 Gestion emploi du temps</a>
-      <a href="utilisateurs.php" class="nav-item active">👥 Gestion des utilisateurs</a>
-      <a href="enseignants.php" class="nav-item">🎓 Gestion des enseignants</a>
-      <a href="eleves.php" class="nav-item">👤 Gestion des élèves</a>
-      <a href="inscriptions.php" class="nav-item">📋 Gestion des inscriptions</a>
-      <a href="mon-profil.php" class="nav-item">👤 Mon Profil</a>
+      <a href="smartcampus/admin/dashboard-admin.php" class="nav-item">🏠 Tableau de bord</a>
+      <a href="smartcampus/admin/planning-admin.php" class="nav-item">📅 Gestion emploi du temps</a>
+      <a href="smartcampus/admin/utilisateurs.php" class="nav-item active">👥 Gestion des utilisateurs</a>
+      <a href="smartcampus/admin/enseignants.php" class="nav-item">🎓 Gestion des enseignants</a>
+      <a href="smartcampus/admin/eleves.php" class="nav-item">👤 Gestion des élèves</a>
+      <a href="smartcampus/admin/inscriptions.php" class="nav-item">📋 Gestion des inscriptions</a>
+      <a href="smartcampus/admin/mon-profil.php" class="nav-item">👤 Mon Profil</a>
     </nav>
 
-    <a href="connexion.php" class="nav-logout">🚪 Déconnexion</a>
+    <a href="smartcampus/connexion/connexion.php" class="nav-logout">🚪 Déconnexion</a>
   </aside>
 
   <main class="main">
@@ -213,7 +213,7 @@ while ($row = $result->fetch_assoc()) {
                   </a>
 
                   <a 
-                    href="utilisateurs.php?supprimer=<?php echo $u["id_utilisateur"]; ?>"
+                    href="smartcampus/admin/utilisateurs.php?supprimer=<?php echo $u["id_utilisateur"]; ?>"
                     onclick="return confirm('Supprimer cet utilisateur ?')"
                   >
                     <button class="btn-lock">🗑️ Supprimer</button>
@@ -237,7 +237,7 @@ while ($row = $result->fetch_assoc()) {
           ➕ Ajouter un utilisateur
         </h2>
 
-        <form method="POST" action="utilisateurs.php">
+        <form method="POST" action="smartcampus/admin/utilisateurs.php">
           <input type="hidden" name="action" value="ajouter">
 
           <div class="profil-info-grid">
