@@ -3,10 +3,10 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
-require_once("smartcampus/connexion/connexion.php");
+require_once("../connexion/connexion.php");
 
 if (!isset($_SESSION["id_utilisateur"])) {
-    header("Location: smartcampus/connexion/connexion.html");
+    header("Location: ../connexion/connexion.html");
     exit();
 }
 
@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && ($_POST["action"] ?? "") === "ajout
 
     $stmt->execute();
 
-    header("Location: smartcampus/admin/enseignants.php?success=1");
+    header("Location: enseignants.php?success=1");
     exit();
 }
 
@@ -81,7 +81,7 @@ if (isset($_GET["supprimer"])) {
     $stmt->bind_param("i", $id);
     $stmt->execute();
 
-    header("Location: smartcampus/admin/enseignants.php");
+    header("Location: enseignants.php");
     exit();
 }
 
@@ -156,23 +156,26 @@ while ($row = $result->fetch_assoc()) {
     $enseignants[] = $row;
 }
 ?>
-<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><title>Enseignants — SmartCampus</title><link rel="stylesheet" href="smartcampus/style.css"></head><body>
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><title>Enseignants — SmartCampus</title><link rel="stylesheet" href="../style.css"></head><body>
 <div class="layout">
   <aside class="sidebar">
-    <div class="sidebar-logo"><img src="smartcampus/images/logo-blanc.png" alt="logo"></div>
+    <div class="sidebar-logo">
+      <img src="../images/logo-blanc.png" alt="logo">
+    </div>
     <nav class="nav">
-      <a href="smartcampus/admin/dashboard-admin.php" class="nav-item">🏠 Tableau de bord</a>
-      <a href="smartcampus/admin/planning-admin.php" class="nav-item ">📅 Gestion emploi du temps</a>
-      <a href="smartcampus/admin/utilisateurs.php" class="nav-item ">👥 Gestion des utilisateurs</a>
-      <a href="smartcampus/admin/enseignants.php" class="nav-item active">🎓 Gestion des enseignants</a>
-      <a href="smartcampus/admin/eleves.php" class="nav-item ">👤 Gestion des élèves</a>
-      <a href="smartcampus/admin/inscriptions.php" class="nav-item ">📋 Gestion des inscriptions</a>
-      <a href="smartcampus/admin/mon-profil.php" class="nav-item ">👤 Mon Profil</a>
+      <a href="dashboard-admin.php" class="nav-item active">🏠 Tableau de bord</a>
+      <a href="emploi-du-temps.php" class="nav-item">📅 Gestion emploi du temps</a>
+      <a href="utilisateurs.php"    class="nav-item">👥 Gestion des utilisateurs</a>
+      <a href="enseignants.php"     class="nav-item">🎓 Gestion des enseignants</a>
+      <a href="eleves.php"          class="nav-item">👤 Gestion des élèves</a>
+      <a href="inscriptions.php"    class="nav-item">📋 Gestion des inscriptions</a>
+      <a href="mon-profil.php"      class="nav-item">👤 Mon Profil</a>
     </nav>
-    <a href="smartcampus/connexion/connexion.html" class="nav-logout">🚪 Déconnexion</a>
+    <a href="../connexion/connexion.html" class="nav-logout">🚪 Déconnexion</a>
   </aside>
+
 <main class="main">
-  <div class="topbar"><div><h1>🎓 Gestion des enseignants</h1><p>Gérez les enseignants de l'établissement</p></div><div class="topbar-right"><button class="btn-primary" onclick="document.getElementById('modal-ajout').style.display='flex'">+ Ajouter</button></div></div>
+  <div class="topbar"><div><h1>🎓 Gestion des enseignants</h1><p>Gérez les enseignants de l'établissement</p></div></div>
   <?php if (isset($_GET['success'])) : ?><div class="pwd-success" style="margin-bottom:16px">✅ Enseignant ajouté avec succès.</div><?php endif; ?>
   <div class="card" style="margin-bottom:20px"><form method="GET"><div class="filtres"><div class="filtre-group"><label>Rechercher</label><input class="filtre-select" name="search" placeholder="Nom, prénom, email..." value="<?= htmlspecialchars($search) ?>"></div><button class="btn-primary">Rechercher</button></div></form></div>
   <div class="card"><div class="card-title">Liste des enseignants <span class="badge-moyenne"><?= count($enseignants) ?> enseignant(s)</span></div>

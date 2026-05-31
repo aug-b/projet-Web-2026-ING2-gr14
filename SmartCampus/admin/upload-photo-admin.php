@@ -1,10 +1,10 @@
 <?php
 
 session_start();
-require_once("smartcampus/connexion/connexion.php");
+require_once("../connexion/connexion.php");
 
 if (!isset($_SESSION["id_utilisateur"])) {
-    header("Location:smartcampus/connexion/connexion.html");
+    header("Location:../connexion/connexion.html");
     exit();
 }
 
@@ -15,7 +15,7 @@ if (
     $_FILES["photo"]["error"] === 0
 ) {
 
-    $dossier = "smartcampus/images/profils/";
+    $dossier = "../images/profils/";
 
     if (!is_dir($dossier)) {
         mkdir($dossier, 0777, true);
@@ -50,5 +50,5 @@ if (
     }
 }
 
-header("Location: smartcampus/admin/mon-profil.php");
+header("Location: mon-profil.php");
 exit();

@@ -3,10 +3,10 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
-require_once("smartcampus/admin/connexion.php");
+require_once("../connexion/connexion.php");
 
 if (!isset($_SESSION["id_utilisateur"])) {
-    header("Location: smartcampus/connexion/connexion.html");
+    header("Location: ../connexion/connexion.html");
     exit();
 }
 
@@ -34,7 +34,7 @@ if (!$admin) {
 <head>
     <meta charset="UTF-8">
     <title>Profil Administrateur — SmartCampus</title>
-    <link rel="stylesheet" href="smartcampus/style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
@@ -42,24 +42,21 @@ if (!$admin) {
 <div class="layout">
 
     <aside class="sidebar">
-        <div class="sidebar-logo">
-            <a href="dashboard-admin.php">
-                <img src="smartcampus/images/logo-blanc.png" alt="logo">
-            </a>
-        </div>
+    <div class="sidebar-logo">
+      <img src="../images/logo-blanc.png" alt="logo">
+    </div>
+    <nav class="nav">
+      <a href="dashboard-admin.php" class="nav-item active">🏠 Tableau de bord</a>
+      <a href="emploi-du-temps.php" class="nav-item">📅 Gestion emploi du temps</a>
+      <a href="utilisateurs.php"    class="nav-item">👥 Gestion des utilisateurs</a>
+      <a href="enseignants.php"     class="nav-item">🎓 Gestion des enseignants</a>
+      <a href="eleves.php"          class="nav-item">👤 Gestion des élèves</a>
+      <a href="inscriptions.php"    class="nav-item">📋 Gestion des inscriptions</a>
+      <a href="mon-profil.php"      class="nav-item">👤 Mon Profil</a>
+    </nav>
+    <a href="../connexion/connexion.html" class="nav-logout">🚪 Déconnexion</a>
+  </aside>
 
-        <nav class="nav">
-     <a href="smartcampus/admin/dashboard-admin.php" class="nav-item">🏠 Tableau de bord</a>
-      <a href="smartcampus/admin/planning-admin.php" class="nav-item ">📅 Gestion emploi du temps</a>
-      <a href="smartcampus/admin/utilisateurs.php" class="nav-item">👥 Gestion des utilisateurs</a>
-      <a href="smartcampus/admin/enseignants.php" class="nav-item">🎓 Gestion des enseignants</a>
-      <a href="smartcampus/admin/eleves.php" class="nav-item">👤 Gestion des élèves</a>
-      <a href="smartcampus/admin/inscriptions.php" class="nav-item">📋 Gestion des inscriptions</a>
-      <a href="smartcampus/admin/mon-profil.php" class="nav-item active">👤 Mon Profil</a>
-        </nav>
-
-        <a href="smartcampus/connexion/connexion.php" class="nav-logout">🚪 Déconnexion</a>
-    </aside>
 
     <main class="main">
 
@@ -69,11 +66,11 @@ if (!$admin) {
 
             <div class="profile-card">
 
-                <form action="smartcampus/admin/upload-photo-admin.php" method="POST" enctype="multipart/form-data">
+                <form action="upload-photo-admin.php" method="POST" enctype="multipart/form-data">
 
                     <div class="profile-image">
                         <img
-                            src="<?= !empty($admin['photo']) ? htmlspecialchars($admin['photo']) : 'images/default.png' ?>"
+                            src="<?= !empty($admin['photo']) ? htmlspecialchars($admin['photo']) : '../images/default.png' ?>"
                             alt="photo profil">
                     </div>
 
@@ -139,7 +136,7 @@ if (!$admin) {
 
                     <br>
 
-                    <a href="smartcampus/admin/changer-mdp-admin.html" class="security-btn">
+                    <a href="changer-mdp-admin.html" class="security-btn">
                         Changer le mot de passe
                     </a>
 
