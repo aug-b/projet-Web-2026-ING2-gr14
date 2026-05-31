@@ -77,24 +77,11 @@ CREATE TABLE note (
 CREATE TABLE presence (
     id_presence INT PRIMARY KEY AUTO_INCREMENT,
     date_presence DATE,
-    statut ENUM('present', 'absent', 'retard') NOT NULL,
+    statut VARCHAR(50),
     id_eleve INT NOT NULL,
     id_cours INT NOT NULL,
-    id_creneau INT NOT NULL,
-
-    FOREIGN KEY (id_eleve)
-        REFERENCES eleve(id_utilisateur)
-        ON DELETE CASCADE,
-
-    FOREIGN KEY (id_cours)
-        REFERENCES cours(id_cours)
-        ON DELETE CASCADE,
-
-    FOREIGN KEY (id_creneau)
-        REFERENCES emploi_du_temps(id_creneau)
-        ON DELETE CASCADE,
-
-    UNIQUE(id_eleve, id_creneau, date_presence)
+    FOREIGN KEY (id_eleve) REFERENCES eleve(id_utilisateur) ON DELETE CASCADE,
+    FOREIGN KEY (id_cours) REFERENCES cours(id_cours) ON DELETE CASCADE
 );
 
 CREATE TABLE emploi_du_temps (
@@ -133,11 +120,13 @@ CREATE TABLE utilisateur_en_attente (
     nom VARCHAR(100) NOT NULL,
     prenom VARCHAR(100) NOT NULL,
     email VARCHAR(150) UNIQUE NOT NULL,
+    mot_de_passe VARCHAR(255) NOT NULL,
     telephone VARCHAR(20),
     date_de_naissance DATE,
     classe VARCHAR(20),
     photo VARCHAR(255),
     photo_id VARCHAR(255),
+    role ENUM('admin', 'enseignant', 'eleve') NOT NULL,
     date_demande DATETIME DEFAULT CURRENT_TIMESTAMP,
     statut ENUM('en_attente', 'accepte', 'refuse') DEFAULT 'en_attente'
 );
